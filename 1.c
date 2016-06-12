@@ -169,4 +169,204 @@ void InitGame()
 	//设置Render环境
      SetWorkkingImage(&g_imgRender);
 }
+setbkmode(TRANSPARENT);
+SetWorkingImage(NULL);
+//创建矿井
+MakeMaze(g_utMap.cx,gut_map.cy);
+//设置游戏者的位置
+g_ptplayer.x = g_utplayer.x * UNIT+UNIT / 2 + g_ptOffset.x;
+g_ptplayer.y = g_utplayer.y * UNIT+UNIT / 2 + g_ptOffset.y;
+//生成矿井，初始化（矿井跨百度必须为奇数）
+void MakeMaze(int width,int height)
+{
+	if(weith % 2 !=1 || height % 2 != 1)
+		return 0;
+	int x,y;
+	//定义矿井的二维数组，并初始化未墙壁
+	//宽高比实际多二，因为两边各有一个哨兵，方便处理数据
+	BYTE** aryMap=new BYTE*[width+2];
+	for(x=0;x<width+2;x++)
+	{
+		aryMap[x]=new BYTE[height+2];
+		memset(aryMap[x],UNIT_WALL.height+2);
+	}
+	//定义边界，哨兵功能
+	for(x=0;x<=width+1;x++)
+		aryMap[x][0]=aryMap[x][height+1]=UNIT_GROUND;
+	for(y=0;y<=height;y++)
+		aryMap[0][y]=aryMap[width+1][y]=UNIT_GROUND;
+	//从任意点开始遍历，生成矿井
+	TravelMaze(((rand() % (width-1)) & Oxfffe)+2,(rand() % (height-1)) &Oxfffe + 2,aryMap);
+	//将矿井绘制在IMAGE对象上
+	SetWorkingImage(&g_imgMap);
+	cleardevice();
+	for(y=1;y<=heught;y++)
+		for(x=1;x<=width;x++)
+			if(aryMap[x][y]==UNIT_WALL)
+				DrawWall(x,y,aryMap[x-1][y])==UNIT_WALL,
+					aryMap[x][y-1]==UNIT_WALL,
+					aryMap[x+1][y]==UNIT_WALL,
+					aryMAp[x][y+1]==UNIT_WALL;
+	SetWorkingImage(NULL);
+}
+//生成矿井，遍历(x,y)四周
+void TravelMaze(int x,int y,BYTE** aryMap)
+{
+	//定义遍历方向
+	int d[4][2]={0,1,1,0,0,-1,-1,0};
+	//将便利方向乱序
+	int n,t,i;
+	for(i=0;i<4;i++)
+	{
+		n=rand()%4;
+		t=d[i][0],d[i][0]=d[n][0],d[n][0]=t;
+		t=d[i][1],d[i][1]=d[n][1],d[n][1]=t;
+
+	}
+	//尝试周围四个方向
+	aryMap[x][y]=UNIT_GROUND;
+	for(i=0;i<4;i++)
+		if(aryMap[x+2*d[i][0]][y+2*d[i][1]]==UNIT_WALL)
+		{
+			aryMap[x+d[i][0]][y+d[i][1]]=UNIT_GROUND;
+			TravelMaze(x+d[i][0]*2,y+d[i][1]*2,aryMap);//递归
+
+		}
+}
+//生成矿井；划一面墙
+//参数：left/top/right/bottom 表示墙是否与旁边相接
+void DrawWall(int x,int y,bool left,bool top,bool right,bool bottom)
+{
+	//墙壁厚 4 pixel
+	int cx,cy;
+	cx=x*UNIT-UNIT/2-2+10;
+	cy=y*UNIT-UNIT/2-2+10;
+	if(left) solidrectangle(x*UNIT-UNIT+10,cy,cx+4,cy+4);
+	if(top)	solidrectangle(cx,y*UNIT-UNIT+10,cx+4,cy+4);
+	if(right) solidrectangle(cx,cy,x*UNIT+9,cy+4);
+	if(bottom) solidrectangle(cx,cy,cx+4,y*UNIT+9);
+}
+//绘制视野范围内的矿井
+void Paint()
+{
+	//设置绘图目标为Render对象
+	SetWorkingImage(&g_imgRender);
+	//清空Render对象
+	cleardevice();
+	//计算视野角度
+	double dx,dy,a;
+	dx=g_ptMouse.x-g_ptplayer.x;
+	dy=g_ptMouse.y-g_ptplayer.y;
+	if(dx == 0 && dy != 0)
+		a=0;
+	else if(dx != 0 && dy != 0)
+		a=atan(dy/dx);
+	else if(dx == 0)
+		a=(dy>0) ? PI/2 : PI*3/2;
+	else 
+		a=0;
+	if(dx<0)
+		a += PI;
+	if(a<0)
+		a += PI*2;
+	//绘制灯光
+	Lighting(g_ptplayer.x,g_ptplayer.y,a)
+	//画游戏者
+	DrawPlayer();
+	//画出口
+	DrawExit();
+	//设置绘图目标为窗口
+	SetWorkingImage(NULL);
+}
+//在指定位置和角度照明
+void Lighting(int _x,int _y,double _a)
+{
+	int i;			//循环变量
+	int x,y;		//临时坐标
+	double a;		//临时角度
+	//计算灯光照亮角度区域
+	double a1 = _a- LIGHT_A/2;
+	double a2 = _a+ LIGHT_A/2;
+	for(a=a1;a<a2;a += PI/360)
+	{
+		for(int r=0;r<LIGHT_R;r++)
+		{
+			//计算照射到的位置
+			x=(int)(_x+cos(a)*r);
+			y=(int)(_y+sin(a)*r);
+			//光线超出屏幕范围终止
+			if(x<0 || x>=WIDTH || y>=HEIGHT-1)
+				break;
+			//光线碰触到建筑物终止
+			if(g_bufMap[y*WIDTH+x])
+				break;
+			//光线叠加
+			g_bufRender[y*WIDTH+x] += Ox202000;//表示淡黄色
+		}
+	}
+	//计算光照扇形区域的最小包围矩形
+	//方法：获得七个点的最值：圆心，圆弧两端，○　与xy轴的四个交点
+	//第一步：初始化七个点
+	POINT pt[7];
+	pt[0].x=_x;
+	pt[0].y=_y;
+	pt[1].x=int(_x+LIGHT_R*cos(a1)+0.5);
+	pt[1].y=int(_y+LIGHT_R*sin(a1)+0.5);
+	pt[2].x=int(_x+LIGHT_R*cos(a2)+0.5);
+       	pt[2].y=int(_y+LIGHT_R*sin(a2)+0.5);
+	for(a=ceil(a1*4/(2*PI))*(PI/2),i=3;a<a2;a+=PI/2,i++)
+	{
+		pt[i].x=int(_x+LIGHT_R*cos(a)+0.5);
+	        pt[i].y=int(_y+LIGHT_R*sin(a)+0.5);
+
+
+	}
+	//第二步：求七个点的最大值最小值，得到最小包围矩阵
+	i--;
+	RECT r={pt[i].x,pt[i].y,pt[i].x,pt[i].y}
+	for(--i;i>=0;i--)
+	{
+		if(pt[i].x<r.left)
+			r.left=pt[i].x;
+		if(pt[i].x>r.right)
+			r.right=pt[i].x;
+		if(pt[i].y<r.top)
+			r.top=pt[i].y;
+		if(pt[i].y>r.bottom)
+			r.bottom = pt[i].y;
+	}
+	//调整矩形范围
+	if(r.left<0)
+		r.left = 0;
+	if(r.top<1)
+		r.top = 1;
+	if(r.right>=WIDTH)
+		r.right = WIDTH-1;
+	if(r.bottom>= HEIGHT-1) 
+		r.bottom=HEIGHT-2; 
+	//修正曝光过度的点
+	for(y=r.top;y<=r.bottom;y++)
+		for(x=r.left;x<=r.right;x++)
+		{
+			i=y*WIDTH+x;
+			if(g_bufRender[i]>Oxffff00)
+				g_bufRender[i]=Oxffff00;
+		}
+	//将光线模糊处理（避开建筑物）
+	for(y=r.top;y<=r.bottom;y++)
+                for(x=r.left;x<=r.right;x++)
+		{
+			i= y*WIDTH+x;
+			if(!g_bufMap[i])
+				g_bufRender[i]=RGB((GetRValue(g_bufRender[i-WIDTH])+GetRValue(g_bufRender[i-1])+GetRValue(g_bufRender[i])+
+					GetRValue(g_bufRender[i+1])+GetRValue(g_bufRender[i+WIDTH]))/5,
+					g_bufRender[i]=RGB((GetRValue(g_bufRender[i-WIDTH])+GetRValue(g_bufRender[i-1])+GetRValue(g_bufRender[i])+
+                                        GetRValue(g_bufRender[i+1])+GetRValue(g_bufRender[i+WIDTH]))/5,
+					g_bufRender[i]=RGB((GetRValue(g_bufRender[i-WIDTH])+GetRValue(g_bufRender[i-1])+GetRValue(g_bufRender[i])+
+                                        GetRValue(g_bufRender[i+1])+GetRValue(g_bufRender[i+WIDTH]))/5
+		}
+
+
+}
+	
 	
