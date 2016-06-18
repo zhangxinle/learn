@@ -368,5 +368,106 @@ void Lighting(int _x,int _y,double _a)
 
 
 }
+//绘制游戏者
+void DrawPlayer()
+{
+	//绘制安全帽
+	setlinecolor(DARKGRAY);
+	circle(g_ptPlayer.x,g_ptPlayer.y,5);
+}
+//绘制出口
+void DrawExit()
+{
+	settextstyle(12,0,_T("宋体"));
+	outtextxy(g_utExit.x*UNIT+g_ptOffset.x,g_utExit.y*UNIT+g_ptOffset.y+8,_T("出口"));
+}	
+//获取用户输入的命令
+int GetCmd()
+{
+	int c=0;
+	if((GetAsyncKeyState(VK_LEFT) & 0x8000)|| (GetAsyncKeyState('A') & 0x8000))              c |= CMD_LEFT;
+	if((GetAsyncKeyState(VK_RIGHT) & 0x8000)||(GetAsyncKeyState('D') & 0x8000))
+		    c |= CMD_RIGHT;
+	if((GetAsyncKeyState(VK_UP) & 0x8000)|| (GetAsyncKeyState('W') & 0x8000))
+		    c |= CMD_UP;
+	if((GetAsyncKeyState(VK_DOWN) & 0x8000)|| (GetAsyncKeyState('S') & 0x8000))
+		    c |= CMD_DOWN;
+	if(GetAsyncKeyState(VK_F2) & 0x8000)
+		    c |= CMD_RESTATE;
+	if(GetAsyncKeyState(VK_ESCAPE) & 0x8000)
+              c |= CMD_QUIT;
+	MOUSEMSG m;
+	while(MouseHit())
+	{
+		m = GetMouseMsg();
+		g_ptMouse.x=m.x;
+		g_ptMouse.y=m.y;
+	}
+	return c;
+}
+//向上移动操作函数
+void OnUp()
+{
+	int i=(g_ptPlayer.y-6)*WIDTH+ (g_ptPlayer.x-5)+1;
+	int j;
+	for(j=0;j<5;j++,i+=2)
+	{
+		if(g_bufMap[i])
+			break;
+	}
+	if(j==5)
+		g_ptPlayer.y--;
+}	
+//向左移动函数
+void OnLeft()
+{
+	int i=(g_ptPlayer.y-5)*WIDTH + (g_ptPlayer.x-5);
+	int j;
+	for(j=0;j<5;j++,i+=WIDTH)
+	{
+		if(g_bufMap[i])
+		    break;
+	}
+	if(j==5)
+   		g_ptPlayer.x--;
+}
+//向右移动函数
+void OnRight()
+{
+	int i=(g_ptPlayer.y-5)*WIDTH+(g_ptPlayer.x+5)+1;
+	int j;
+	for(j=0;j<5;j++,i+=WIDTH)
+	{
+		if(g_bufMap[i])
+			break;
+ 	}
+	if(j==5)
+		g_ptPlayer.x++;
+}
+//向下移动函数
+void OnDown()
+{
+	int i=(g_ptPlayer.y+5)*WIDTH+(g_ptPlayer.x-5)+1;
+	int j;
+	for(j=0;j<5;j++,i+=2)
+	{
+		if(g_bufMap[i])
+			break;
+		if(j==5)
+		  	g_ptPlayer.y++;
+	}
+}
+//检查是否到出口
+bool CheckWin()
+{
+	return (g_ptPlayer.y >=g_utExi.y*UNIT +UNIT/2+g_ptOffset.y);
+}
+	
+
+
+
+
+
+
 	
 	
