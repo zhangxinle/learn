@@ -1,0 +1,124 @@
+# Project: 项目1
+# Makefile created by Dev-C++ 5.7.1
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/TTMS.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Account_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Main_Menu.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Play_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Queries_Menu.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Query_Play_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Sale_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/SalesAnalysis_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Schedule_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Seat_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Studio_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Ticket_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Account.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/EntityKey.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Play.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Sale.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/SalesAnalysis.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Schedule.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Seat.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Studio.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Ticket.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Account_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/EntityKey_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Play_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Query_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Sale_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/SalesAnalysis_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Schedule_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Seat_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Studio_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Ticket_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Common/common.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Common/listTestDrv.o
+LINKOBJ  = C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/TTMS.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Account_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Main_Menu.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Play_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Queries_Menu.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Query_Play_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Sale_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/SalesAnalysis_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Schedule_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Seat_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Studio_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Ticket_UI.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Account.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/EntityKey.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Play.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Sale.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/SalesAnalysis.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Schedule.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Seat.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Studio.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Ticket.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Account_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/EntityKey_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Play_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Query_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Sale_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/SalesAnalysis_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Schedule_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Seat_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Studio_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Ticket_Persist.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Common/common.o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Common/listTestDrv.o
+LIBS     = -L"D:/DevCpp/64位/MinGW64/lib" -L"D:/DevCpp/64位/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"D:/DevCpp/64位/MinGW64/include" -I"D:/DevCpp/64位/MinGW64/x86_64-w64-mingw32/include" -I"D:/DevCpp/64位/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
+CXXINCS  = -I"D:/DevCpp/64位/MinGW64/include" -I"D:/DevCpp/64位/MinGW64/x86_64-w64-mingw32/include" -I"D:/DevCpp/64位/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"D:/DevCpp/64位/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++"
+BIN      = 电影院.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/TTMS.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/TTMS.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/TTMS.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/TTMS.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Account_UI.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Account_UI.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Account_UI.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Account_UI.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Main_Menu.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Main_Menu.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Main_Menu.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Main_Menu.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Play_UI.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Play_UI.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Play_UI.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Play_UI.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Queries_Menu.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Queries_Menu.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Queries_Menu.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Queries_Menu.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Query_Play_UI.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Query_Play_UI.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Query_Play_UI.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Query_Play_UI.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Sale_UI.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Sale_UI.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Sale_UI.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Sale_UI.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/SalesAnalysis_UI.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/SalesAnalysis_UI.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/SalesAnalysis_UI.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/SalesAnalysis_UI.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Schedule_UI.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Schedule_UI.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Schedule_UI.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Schedule_UI.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Seat_UI.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Seat_UI.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Seat_UI.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Seat_UI.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Studio_UI.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Studio_UI.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Studio_UI.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Studio_UI.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Ticket_UI.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Ticket_UI.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Ticket_UI.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/View/Ticket_UI.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Account.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Account.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Account.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Account.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/EntityKey.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/EntityKey.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/EntityKey.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/EntityKey.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Play.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Play.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Play.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Play.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Sale.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Sale.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Sale.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Sale.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/SalesAnalysis.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/SalesAnalysis.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/SalesAnalysis.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/SalesAnalysis.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Schedule.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Schedule.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Schedule.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Schedule.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Seat.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Seat.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Seat.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Seat.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Studio.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Studio.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Studio.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Studio.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Ticket.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Ticket.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Ticket.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Service/Ticket.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Account_Persist.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Account_Persist.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Account_Persist.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Account_Persist.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/EntityKey_Persist.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/EntityKey_Persist.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/EntityKey_Persist.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/EntityKey_Persist.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Play_Persist.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Play_Persist.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Play_Persist.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Play_Persist.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Query_Persist.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Query_Persist.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Query_Persist.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Query_Persist.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Sale_Persist.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Sale_Persist.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Sale_Persist.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Sale_Persist.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/SalesAnalysis_Persist.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/SalesAnalysis_Persist.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/SalesAnalysis_Persist.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/SalesAnalysis_Persist.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Schedule_Persist.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Schedule_Persist.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Schedule_Persist.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Schedule_Persist.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Seat_Persist.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Seat_Persist.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Seat_Persist.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Seat_Persist.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Studio_Persist.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Studio_Persist.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Studio_Persist.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Studio_Persist.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Ticket_Persist.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Ticket_Persist.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Ticket_Persist.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Persistence/Ticket_Persist.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Common/common.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Common/common.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Common/common.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Common/common.o $(CFLAGS)
+
+C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Common/listTestDrv.o: C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Common/listTestDrv.c
+	$(CC) -c C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Common/listTestDrv.c -o C:/Users/wo/Desktop/TTMS160615/TTMS160615/src/Common/listTestDrv.o $(CFLAGS)
